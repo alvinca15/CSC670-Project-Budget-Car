@@ -2,5 +2,101 @@
 
 /* Style for body specifies a background color */
 body {
-	background-color: #E0F0FF;
+	background-color: whitesmoke;
+    padding: 20px 30px 20px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#spanner {
+    height: 50px;
+    padding-right: 10px;
+}
+
+#processBar {
+    height: 50px;
+    width: 100%;  
+    clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+.logo {
+    height: 36px;
+}
+
+.budget {
+    font-family: Arial;
+    vertical-align: text-top;
+    font-weight: bold;
+    font-size: 36px;
+    color: midnightblue;
+}
+
+.signIn {
+    color: coral;
+    font-size: 20px;
+}
+
+.signIn a {
+    color: coral;
+    text-decoration: none;
+}
+
+.signIn a:link {
+    color: coral;
+}
+
+.signIn a:hover {
+    color: coral;
+    font-size: 22px;
+}
+
+.progress-x {
+    width: 25%;
+    height: 50px;
+    display: block;
+	float:left;
+    color: #ddd;    
+}
+
+.progress-x div {
+    width: 96%;
+    height: 5px;
+    border:1px solid #ddd;
+    background: #ccc;
+    text-align: center;
+}
+
+.progress-y {
+    width: 25%;
+    height: 50px;
+    display: block;
+	float:left;
+    color: coral;
+    font-weight: bold;
+}
+
+.progress-y div {
+    width: 96%;
+    height: 5px;
+    border:1px solid coral;
+    background: coral;
+    text-align: center;
+}
+
+.main {
+    margin-right: 10px;
+    height: 600px;
+    background-image: url(../images/background.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+footer {
+    padding-top: 20px;
+    padding-right: 10px;
+    width: 90%;
+    text-align: center;
+    margin-bottom: 20px;
 }
