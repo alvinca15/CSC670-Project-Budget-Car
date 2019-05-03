@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- This website template was created by: Wenguang.Liu, April 28, 2019 -->
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>CSC670-Project-Budget-Car</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script>
+    
+        function init() {
+            let pickupAddr = localStorage.getItem("pickup");
+            if (pickupAddr)
+                $("#pickUp").text(pickupAddr);
+            
+            let returnAddr = localStorage.getItem("return");
+            if (returnAddr) 
+                $("#return").text(returnAddr);
+        }
+        
+        function payNow(carType, carBrand, carImg, baseRate, saving) {
+            localStorage.setItem("saving", saving);
+            toExtraOptions(carType, carBrand, carImg, baseRate);
+            
+        }
+        
+        function toExtraOptions(carType, carBrand, carImg, baseRate) {
+            localStorage.setItem("carImg", carImg);
+            localStorage.setItem("carType", carType);
+            localStorage.setItem("carBrand", carBrand);
+            localStorage.setItem("baseRate", baseRate);
+            
+            location.href = 'extraOptions.html';
+        }
+    </script>
+</head>
+
+<body onload="init()">
+	
+	<div id="spanner">
+        <span class="signIn float-right"><a href="index.html">Sign In</a></span>
+        <span class="logo float-left"><img width="55" height="36" onclick="location.href='index.html';" src="images/logo.PNG" ></span>
+        <h2 class="budget">Budget</h2>        
+	</div>
+    
+    <div id="processBar">
+        <div class="progress-x">
+            &nbsp;1. 
+            <div></div>
+        </div>
+        <div class="progress-y">
+            &nbsp;2. Select a Car
+            <br>
+            <div></div>
+        </div>
+        <div class="progress-x">
+            &nbsp;3. 
+            <br>
+            <div></div>
+        </div>
+        <div class="progress-x">
+            &nbsp;4. 
+            <br>
+            <div></div>
+        </div>
+    </div>
+
+	<!-- Use the main area to add the main content of the webpage -->
+	<div class="row">
+	   <div class="col-3">
+            <p class="text-warning font-weight-bold">Pick-Up</p>
+           <p id="pickUp">San Jose Intl Airport, SJC</p>
+           <p class="font-weight-bold">Thu, May 16, 12:00 PM</p>
+        </div>
+        <div class="vl"></div>
+        <div class="col-4">
+            <p class="text-warning font-weight-bold">Return</p>
+           <p id="return">San Jose Intl Airport, SJC</p>
+           <p class="font-weight-bold">Fri, May 17, 12:00 PM</p>
+        </div>
+	</div>
+    
+    <div class="row">
+        <div class="col hl"></div>
+        <div style="min-width: 220px;" class="col-2 text-danger font-weight-bold"><img src="images/pencil.PNG">&nbsp;Modify Rental Details</div>
+    </div>
+    
+    <div class="row w-100">
+        <form class="w-100">
+            <div class="form-row m-3">
+                <div class="col">
+                    <select name="showing" class="border border-warning form-control">
+                        <option value="showing">Showing: All Vehicle (10)</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="sortBy" class="border border-warning form-control">
+                        <option value="sortBy">Sort By: Recommended</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="offercode" class="border border-warning form-control">
+                        <option value="offerCode">Add Offer Code</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="currency" class="border border-warning form-control">
+                        <option value="currency">Currency: USD</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="row w-100">
+        <div class="col hl"></div>
+    </div>
+    
+    <div class="w-100 text-center">
+        <div class="row m-2">
+            <div class="col-4">
+                <img class="img-responsive" style="max-width:300px;" src="images/intermediatecar.PNG">
+            </div>
+            <div class="col">
+                <p class="h2 text-dark font-weight-bold">Intermediate</p>
+                <p>Hyundai Elantra or similar </p>
+                <p class="font-weight-bold text-warning">View Vehicle Information</p>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4">$35</p>
+                <button onclick="toExtraOptions('Intermediate', 'Hyundai Elantra', 'intermediatecar.PNG', 35);" class="btn btn-warning" style="min-width: 160px;" type="button">Pay at Counter</button>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4 text-warning">$31.5</p>
+                <button onclick="payNow('Intermediate', 'Hyundai Elantra', 'intermediatecar.PNG', 31.5, 3.5);" class="btn btn-info w-90" style="min-width: 160px;" type="button">Pay Now</button>
+                <p class="font-weight-bold text-secondary">Pay Now & Save $3.50</p>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col hl"></div>
+        </div>
+        <div class="row m-2">
+            <div class="col-4">
+                <img class="img-responsive" style="max-width:300px;" src="images/StandardSUV.PNG">
+            </div>
+            <div class="col">
+                <p class="h2 text-dark font-weight-bold">Standard SUV</p>
+                <p>Ford Edge or similar </p>
+                <p class="font-weight-bold text-warning">View Vehicle Information</p>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4">$43</p>
+                <button onclick="toExtraOptions('Standard SUV', 'Ford Edge', 'StandardSUV.PNG', 43);" class="btn btn-warning" style="min-width: 160px;" type="button">Pay at Counter</button>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4 text-warning">$38.7</p>
+                <button onclick="payNow('Standard SUV', 'Ford Edge', 'StandardSUV.PNG', 38.7, 4.3);" class="btn btn-info w-90" style="min-width: 160px;" type="button">Pay Now</button>
+                <p class="font-weight-bold text-secondary">Pay Now & Save $4.30</p>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col hl"></div>
+        </div>
+        <div class="row m-2">
+            <div class="col-4">
+                <img class="img-responsive" style="max-width:300px;" src="images/Economy.PNG">
+            </div>
+            <div class="col">
+                <p class="h2 text-dark font-weight-bold">Economy</p>
+                <p>Ford Fiesta Sedan or similar </p>
+                <p class="font-weight-bold text-warning">View Vehicle Information</p>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4">$34</p>
+                <button onclick="toExtraOptions('Economy', 'Ford Fiesta Sedan', 'Economy.PNG', 34);" class="btn btn-warning" style="min-width: 160px;" type="button">Pay at Counter</button>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <p class="h4 text-warning">$30.5</p>
+                <button onclick="payNow('Economy', 'Ford Fiesta Sedan', 'Economy.PNG', 30.5, 3.5);" class="btn btn-info w-90" style="min-width: 160px;" type="button">Pay Now</button>
+                <p class="font-weight-bold text-secondary">Pay Now & Save $3.50</p>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col hl"></div>
+        </div>
+    </div>
+    
+	<!-- Use the footer area to add webpage footer content -->
+	<div class="footer-copyright text-center py-3">
+		&copy; Copyright 2019. All Rights Reserved.<br>
+		<a href="mailto:W.Liu422@student.nu.edu">W.Liu422@student.nu.edu</a>
+	</div>
+	
+</body>
+</html>

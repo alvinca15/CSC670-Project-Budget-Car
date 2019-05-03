@@ -3,20 +3,36 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<title>CSC670-Project-Budget-Car</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script>
+    
+        function selectACar() {
+            
+            localStorage.setItem("pickup", $("#pickUpLocation").val());
+            localStorage.setItem("return", $("#returnLocation").val());
+            localStorage.setItem("startDate", $("#startdatepicker").val());
+            localStorage.setItem("startTime", $("#startTime").val());
+            localStorage.setItem("endDate", $("#enddatepicker").val());
+            localStorage.setItem("endTime", $("#endTime").val());
+            
+            location.href = 'carList.html';
+        }
+    </script>
 </head>
 
 <body>
 	
 	<div id="spanner">
-        <span class="signIn float-right"><a href="#">Sign In</a></span>
-        <span class="logo float-left"><img width="55" height="36" src="images/logo.PNG" ></span>
+        <span class="signIn float-right"><a href="index.html">Sign In</a></span>
+        <span class="logo float-left"><img width="55" height="36" onclick="location.href='index.html';" src="images/logo.PNG" ></span>
         <h2 class="budget">Budget</h2>        
 	</div>
     
@@ -43,16 +59,80 @@
     </div>
 
 	<!-- Use the main area to add the main content of the webpage -->
-	<div class="main">
-	
+	<div class="main" align="center">
+        <br>
+        <h2>Select your Rental Car</h2>
+       <div class="text-center p-3" style="background-color: #ef7809; max-width: 1024px; ">
+            <form>
+                <div class="form-row m-1">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Enter your pick-up location" id="pickUpLocation">
+                    </div>
+                    <div class="col-3">
+                        <input id="startdatepicker" placeholder="mm/dd/yyyy" class="form-control" >
+                        <script>
+                            $('#startdatepicker').datepicker({
+                                uiLibrary: 'bootstrap4'
+                            });
+                        </script>
+                    </div>
+                    <div class="col-3">
+                        <input type="time" class="form-control" id="startTime">
+                    </div>
+                </div>
+                <div class="form-row m-1">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Return to same location" id="returnLocation">
+                    </div>
+                    <div class="col-3">
+                        <input id="enddatepicker" placeholder="mm/dd/yyyy" class="form-control" >
+                        <script>
+                            $('#enddatepicker').datepicker({
+                                uiLibrary: 'bootstrap4'
+                            });
+                        </script>
+                    </div>
+                    <div class="col-3">
+                        <input type="time" class="form-control" id="endTime">
+                    </div>                    
+                </div>
+                <div class="form-row m-1">
+                    <div class="col">
+                        <select name="age" class="form-control">
+                            <option value="25+">Age: 25+</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select name="whereLive" class="form-control">
+                            <option value="USA">I live in: U.S.A</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="customerID" class="form-control">
+                            <option value="USA">Add Cust. ID *</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="offerCode" class="form-control">
+                            <option value="USA">Offer Codes *</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" value="VehicleType *" disabled>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <button onclick="selectACar()" class="btn btn-info" type="button">Select a Car</button>
 	
 	</div>
 
 	<!-- Use the footer area to add webpage footer content -->
-	<footer>
+	<div class="footer-copyright text-center py-3">
 		&copy; Copyright 2019. All Rights Reserved.<br>
 		<a href="mailto:W.Liu422@student.nu.edu">W.Liu422@student.nu.edu</a>
-	</footer>
+	</div>
 	
 </body>
 </html>

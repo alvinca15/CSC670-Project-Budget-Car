@@ -84,6 +84,16 @@ body {
     text-align: center;
 }
 
+.vl {
+    border-left: 2px solid #ddd;
+    height: 120px;
+}
+
+.hl {
+    border-bottom: 2px solid #ddd;
+    width: 80%
+}
+
 .main {
     margin-right: 10px;
     height: 600px;

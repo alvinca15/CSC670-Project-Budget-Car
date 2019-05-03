@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- This website template was created by: Wenguang.Liu, April 28, 2019 -->
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>CSC670-Project-Budget-Car</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script>
+        function showLDWInPayment (obj) {
+            let baseRate = localStorage.getItem("baseRate");
+            var total = parseFloat(baseRate) + 16.52;
+            if (obj.checked == true) {
+                $("#ldw").attr("style", "");
+                $("#ldw").attr("class", "row my-1");
+                total += 17.00;
+            }else 
+                $("#ldw").attr("style", "display:none");
+            
+            $("#total").text("$" + parseFloat(total).toFixed(2));
+        }
+        
+        function init() {
+             
+            let baseRate = localStorage.getItem("baseRate");
+            if (baseRate) {
+                $("#baseRate").text("$" + baseRate);
+                var total = parseFloat(baseRate) + 16.52;
+                $("#total").text("$" + parseFloat(total).toFixed(2));
+            }
+            
+            let saving = localStorage.getItem("saving");
+            if (saving) {
+                $("#saving").text("Your Total Saving Today: $" + saving);
+            }
+                
+             
+            let pickupAddr = localStorage.getItem("pickup");
+            if (pickupAddr)
+                $("#pickup").text(pickupAddr);
+             
+            let returnAddr = localStorage.getItem("return");
+            if (returnAddr) 
+                $("#return").text(returnAddr);
+             
+            let carType = localStorage.getItem("carType");
+            if (carType)
+                $("#carType").text(carType);
+             
+            let carBrand = localStorage.getItem("carBrand");
+            if (carBrand) 
+                $("#carBrand").text(carBrand+" or similar");
+             
+            let carImg = localStorage.getItem("carImg");
+            if (carImg) 
+                $("#carImg").attr("src", "images/" + carImg);
+             
+        }
+    </script>
+    
+</head>
+
+<body onload="init()">
+	
+	<div id="spanner">
+        <span class="signIn float-right"><a href="index.html">Sign In</a></span>
+        <span class="logo float-left"><img width="55" height="36" onclick="location.href='index.html';" src="images/logo.PNG" ></span>
+        <h2 class="budget">Budget</h2>        
+	</div>
+    
+    <div id="processBar">
+        <div class="progress-x">
+            &nbsp;1. 
+            <div></div>
+        </div>
+        <div class="progress-x">
+            &nbsp;2. 
+            <br>
+            <div></div>
+        </div>
+        <div class="progress-y">
+            &nbsp;3. Extra Options
+            <br>
+            <div></div>
+        </div>
+        <div class="progress-x">
+            &nbsp;4. 
+            <br>
+            <div></div>
+        </div>
+    </div>
+
+	<!-- Use the main area to add the main content of the webpage -->
+	<!-- Use the main area to add the main content of the webpage -->
+	<div class="row">
+    
+        <div class="col">
+            <div class="row">
+               <div class="col" style="max-width: 300px;">
+                    <p class="text-warning font-weight-bold">Pick-Up</p>
+                   <p id="pickup">San Jose Intl Airport, SJC</p>
+                   <p class="font-weight-bold">Thu, May 16, 12:00 PM</p>
+                </div>
+                <div class="vl"></div>
+                <div class="col">
+                    <p class="text-warning font-weight-bold">Return</p>
+                   <p id="return">San Jose Intl Airport, SJC</p>
+                   <p class="font-weight-bold">Fri, May 17, 12:00 PM</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col hl"></div>
+            </div>
+            <div class="row m-2">
+                <img id="carImg" class="img-fluid" src="images/intermediatecar.PNG" style="max-width: 200px; max-height: 100px;">
+                <div>
+                    <p id="carType" class="h3 text-dark font-weight-bold">Intermediate</p>
+                    <p><span id="carBrand">Hyundai Elantra or similar </span> <br> Automatic Transmission</p>
+                </div>
+            </div>
+        </div>
+        <!-- vertical line -->
+        <div class="vl" style="height: 230px"></div>
+        <div class="col-4 m-3">
+            <div class="row my-1">
+                <span class="col text-left">Base Rate</span>
+                <span id="baseRate" class="col text-right"> $31.5</span>
+            </div>
+            <div class="row my-1">
+                <span class="col text-left">Mileage</span>
+                <span class="col text-right">Unlimited</span>
+            </div>
+            <div id="ldw" class="row my-1" style="display: none">
+                <span class="col text-left">LDW</span>
+                <span class="col text-right">$17.00</span>
+            </div>
+            <div class="row my-3">
+                <span class="col text-left">Fees & Taxes</span>
+                <span class="col text-right">$16.52</span>
+            </div>
+            <div class="row my-3">
+                <span class="col text-left">Total Payment</span>
+                <span id="total" class="col font-weight-bold text-warning text-right">$48.02</span>
+            </div>
+        
+            <br>
+            <div class="bg-info row">
+                <span id="saving" class="w-100 text-center">Your Total Saving Today: $3.50</span>   
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col hl"></div>
+        <div style="min-width: 220px;" class="col-2 text-danger font-weight-bold"><img src="images/pencil.PNG">&nbsp;Modify Rental Details</div>
+    </div>
+    
+    <div class="row my-3">
+        <p class="col h2 text-left">Recommended Extras</p>
+        <button class="btn btn-dark col-2" style="width: 160px;">Continue</button>
+    </div>
+    
+    <div class="row my-3">
+        <div class="col hl"></div>
+    </div>
+    
+    <div>
+        <p class="h3">Protections & Coverages</p>
+        <div class="row">
+            <!-- LDW -->
+            <div class="col-1">
+            <img class="img-responsive" src="images/LDW.PNG">
+            </div>            
+            <div class="col">
+            <p class="h3">Cover The Car (LDW)</p>
+            <p>With LDW, avoid paying for damage to our vehicle with no additional out of pocket expense & no increase to your personal policy due to an incident.</p>
+            </div>            
+            <div class="col-2">
+                <div class="row bg-warning text-center px-3 py-2" style="width: 160px; height: 36px;">
+                    <form>
+                    <div class="form-check">
+                        <input onchange="showLDWInPayment(this)" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">$17.00/Day</label>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="row my-3">
+            <div class="col hl"></div>
+        </div>
+    
+        <p class="h3">Equipment & Services</p>
+        <div class="row">
+            <!-- ADR -->
+            <div class="col-1">
+            <img class="img-responsive" src="images/ADR.PNG">
+            </div>            
+            <div class="col">
+            <p class="h3">Additional Driver (ADR)</p>
+            <p>Each driver must be 25 or older and show a valid driver’s license at the rental counter. 
+                (Oh, and no additional fee for qualifying family members.)</p>
+            </div>            
+            <div class="col-2">
+                <div class="row bg-warning text-center px-3 py-2" style="width: 160px; height: 36px;">
+                    <form>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">$0.00/Day</label>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="row my-3">
+            <div class="col hl"></div>
+        </div>
+    </div>
+
+	<!-- Use the footer area to add webpage footer content -->
+	<div class="footer-copyright text-center py-3">
+		&copy; Copyright 2019. All Rights Reserved.<br>
+		<a href="mailto:W.Liu422@student.nu.edu">W.Liu422@student.nu.edu</a>
+	</div>
+	
+</body>
+</html>
